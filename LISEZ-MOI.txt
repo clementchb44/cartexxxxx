@@ -1,0 +1,6 @@
+ARMURERIE FÉÉRIQUE — nouveau jeu (indépendant de CartEX)
+
+À mettre dans UN NOUVEAU dépôt GitHub (ou un nouveau dossier), avec exactement ces noms :
+  index.html, style.css, script.js, game.mjs, items.mjs
+Ne renomme rien ("script (1).js" ne marchera pas). Ensuite Ctrl+F5.
+La sauvegarde est dans le navigateur (localStorage), séparée de celle de CartEX.
