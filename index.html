@@ -1,64 +1,39 @@
 <!doctype html>
 <html lang="fr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1a1030"><title>Armurerie Féerique</title><link rel="stylesheet" href="style.css?v=1"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f2a3a"><title>Toilet Shot</title><link rel="stylesheet" href="style.css?v=1"></head>
 <body>
-<div id="defs"></div>
-<header><a class="brand" href="./">Armurerie <span>Féerique</span><small>FORGE TON HÉROS</small></a><button class="who" data-tab="profil" aria-label="Mon profil"><b id="who-name">Héros</b><small id="who-level">Niv. 1</small></button><div class="wallet"><span>◉ <b id="balance">0</b></span></div></header>
-<nav aria-label="Navigation principale"><button class="active" data-tab="perso">🧙 <span>Héros</span></button><button data-tab="packs">🎁 <span>Boosters</span></button><button data-tab="collection">📚 <span>Collection</span></button><button data-tab="boutique">🛒 <span>Boutique</span></button><button data-tab="profil">👤 <span>Profil</span></button></nav>
+<header><a class="brand" href="./">Toilet <span>Shot</span><small>VISE · GLISSE · RELÂCHE</small></a><div class="coins">🪙 <b id="coins">0</b></div></header>
+<nav aria-label="Navigation"><button class="active" data-tab="jouer">🎯 <span>Jouer</span></button><button data-tab="perso">🧍 <span>Personnage</span></button></nav>
 <main>
-<p id="status" role="status" aria-live="polite"></p>
-
-<section id="perso" class="tab visible">
- <div class="perso-grid">
-  <div class="stage"><div id="stage-char"></div><p class="power">⚔️ Puissance <b id="power">0</b></p></div>
-  <div class="slots-panel"><h2>Équipement</h2><div id="slots" class="slots"></div><div id="picker" class="picker" hidden><div class="picker-head"><h3 id="picker-title"></h3><button id="picker-close" class="secondary" type="button">Fermer</button></div><div id="picker-list" class="picker-list"></div></div></div>
+<section id="jouer" class="tab visible">
+ <div id="menu">
+  <h1>Choisis un niveau</h1>
+  <p class="fine">Plus tu avances, plus c’est dur : murs, vent, toilettes qui bougent… Gagne des pièces pour acheter des skins !</p>
+  <div id="levels" class="levels"></div>
+ </div>
+ <div id="game" hidden>
+  <div class="hud">
+   <button id="back" class="secondary">← Niveaux</button>
+   <div class="hud-mid"><b id="h-level">Niveau 1</b><span id="h-theme"></span></div>
+   <div class="hud-right"><span id="h-wind" title="Vent"></span><button id="fs" class="secondary" aria-label="Plein écran">⛶</button></div>
+  </div>
+  <div class="hud2"><div class="shots" id="shots" aria-label="Tirs restants"></div><div class="fill"><span>Cuvette</span><div class="bar"><u id="fillbar"></u></div></div></div>
+  <div class="canvas-wrap"><canvas id="cv" width="1800" height="900"></canvas>
+   <div id="hint" class="hint">Touche et glisse <b>vers l’arrière</b>, puis relâche !</div>
+   <div id="overlay" class="overlay-game" hidden></div>
+  </div>
+  <p class="fine rot">💡 Astuce : tourne ton téléphone en mode paysage pour mieux viser.</p>
  </div>
 </section>
 
-<section id="packs" class="tab">
- <div class="hero"><h1>Boosters</h1><p class="fine">1 booster toutes les 15 minutes (10 en réserve). Chaque booster contient 5 pièces d’équipement.</p>
- <div class="reserve"><b id="reserve">0 / 10 boosters</b><div id="reserve-track" class="track"></div><small id="reserve-next"></small></div>
- <div class="actions"><button id="open1" class="primary">Ouvrir 1 booster</button><button id="open5" class="secondary">Ouvrir 5</button><button id="open10" class="secondary">Ouvrir 10</button></div>
- <div id="daily" class="daily"></div></div>
- <div id="pack-title" class="pack-title"></div>
- <div id="pack-cards" class="grid cards"></div>
-</section>
-
-<section id="collection" class="tab">
- <h1>Collection</h1><p id="count" class="fine"></p>
- <div class="filters"><div id="f-slot" class="chips"></div><div id="f-rar" class="chips"></div></div>
- <div id="coll" class="grid cards"></div>
- <div class="sell-box"><h2>Vendre les doublons</h2><p class="fine">On garde toujours un exemplaire de chaque pièce. Coche les raretés à vendre.</p><div id="sell-rar" class="chips"></div><button id="sell" class="secondary">Vendre les doublons</button></div>
-</section>
-
-<section id="boutique" class="tab">
- <h1>Boutique</h1><p class="fine">Paie avec tes jetons ◉ (gagnés en vendant des doublons, au niveau supérieur et chaque jour).</p>
- <div id="shop" class="shop-layout"></div>
-</section>
-
-<section id="profil" class="tab">
- <h1>Profil</h1>
- <div class="profile-top"><div id="pf-char"></div><div class="pf-info"><h2 id="pf-name"></h2><p id="pf-class" class="fine"></p><p id="pf-level"></p><div class="bar"><u id="pf-xp"></u></div><small id="pf-xptext"></small>
- <form id="rename-form"><input id="rename-input" maxlength="16" placeholder="Nouveau nom…" aria-label="Nouveau nom"><button class="secondary" type="submit">Renommer</button></form></div></div>
- <h2>Statistiques</h2><div id="pf-stats" class="stats"></div>
- <h2>Complétion</h2><div id="pf-bars"></div>
- <button id="reset" class="danger">Recommencer avec un nouveau héros</button>
+<section id="perso" class="tab">
+ <h1>Personnage</h1>
+ <div class="perso-grid">
+  <div class="preview"><canvas id="pv" width="1800" height="900"></canvas><p class="fine">Aperçu de ton style</p></div>
+  <div class="shop"><div id="cats" class="chips"></div><div id="skins" class="skins"></div></div>
+ </div>
 </section>
 </main>
-
-<div id="create" class="overlay" hidden><div class="create-box">
- <h1>Crée ton héros</h1>
- <div class="create-grid"><div class="stage small"><div id="create-char"></div></div>
- <div class="create-form">
-  <label>Nom<input id="c-name" maxlength="16" placeholder="Ton nom de héros" value=""></label>
-  <div><h3>Classe</h3><div id="c-class" class="classes"></div></div>
-  <div><h3>Peau</h3><div id="c-skin" class="swatches"></div></div>
-  <div><h3>Coiffure</h3><div id="c-hair" class="chips"></div></div>
-  <div><h3>Cheveux</h3><div id="c-hcol" class="swatches"></div></div>
-  <div><h3>Yeux</h3><div id="c-eyes" class="swatches"></div></div>
-  <button id="c-go" class="primary big">Commencer l’aventure ⚔️</button>
- </div></div>
-</div></div>
 <div id="toast" class="toast" hidden></div>
 <script type="module" src="script.js?v=1"></script>
 </body>

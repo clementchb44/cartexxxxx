@@ -1,6 +1,6 @@
-ARMURERIE FÉÉRIQUE — nouveau jeu (indépendant de CartEX)
+TOILET SHOT — jeu de tir 2D (indépendant de CartEX et de l'Armurerie)
 
 À mettre dans UN NOUVEAU dépôt GitHub (ou un nouveau dossier), avec exactement ces noms :
-  index.html, style.css, script.js, game.mjs, items.mjs
+  index.html, style.css, script.js, game.mjs
 Ne renomme rien ("script (1).js" ne marchera pas). Ensuite Ctrl+F5.
-La sauvegarde est dans le navigateur (localStorage), séparée de celle de CartEX.
+La sauvegarde est dans le navigateur (localStorage).
